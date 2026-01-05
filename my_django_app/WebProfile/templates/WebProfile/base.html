@@ -1,0 +1,199 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}Profile Saya{% endblock %}</title>
+    
+    <!-- Bootstrap CSS (Offline) -->
+    <link href="{% static 'css/bootstrap.min.css' %}" rel="stylesheet">
+    <!-- Bootstrap Icons -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.0/font/bootstrap-icons.css">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    
+    <style>
+        /* 1. KUNCI LAYAR (Viewport) */
+        html, body {
+            height: 100%; 
+            margin: 0;
+            overflow: hidden; 
+        }
+        
+        body {
+            font-family: 'Poppins', sans-serif;
+            padding-top: 56px; 
+            background-color: #f8f9fa;
+            display: flex; 
+            flex-direction: column; 
+        }
+        
+        /* 2. AREA STATIS */
+        #mainCarousel {
+            flex: 0 0 auto;
+        }
+        .carousel-item { height: 300px; } 
+        .carousel-item img { object-fit: cover; height: 100%; filter: brightness(0.7); }
+
+        footer {
+            flex: 0 0 auto; 
+        }
+
+        /* 3. AREA DINAMIS */
+        #mainContainerWrapper {
+            flex: 1; 
+            overflow: hidden; 
+            padding: 20px 0;
+        }
+        .row-full { height: 100%; }
+        .col-full { height: 100%; }
+
+        /* 4. AREA SCROLLABLE */
+        .sidebar {
+            background-color: white;
+            border-radius: 8px;
+            padding: 20px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+            height: 100%; 
+            overflow-y: auto; 
+        }
+
+        .main-content-area {
+            background-color: white;
+            border-radius: 8px;
+            padding: 30px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+            height: 100%; 
+            overflow-y: auto; 
+        }
+
+        /* Styling tambahan */
+        .section-title {
+            border-bottom: 2px solid #764ba2;
+            padding-bottom: 10px;
+            margin-bottom: 20px;
+            color: #2c3e50;
+        }
+        .sidebar-profile-img { width: 100px; height: 100px; border-radius: 50%; object-fit: cover; border: 3px solid #764ba2; margin-bottom: 15px; }
+        .gallery-img { width: 100%; height: 200px; object-fit: cover; border-radius: 8px; transition: transform 0.3s; }
+        .gallery-img:hover { transform: scale(1.05); }
+    </style>
+</head>
+<body>
+
+    <!-- NAVBAR -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top shadow">
+        <div class="container">
+            <a class="navbar-brand fw-bold" href="{% url 'home' %}">MyProfile</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link" href="{% url 'home' %}">Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="{% url 'about' %}">About Me</a></li>
+                    <li class="nav-item"><a class="nav-link" href="{% url 'gallery' %}">Gallery</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- CAROUSEL -->
+    <div id="mainCarousel" class="carousel slide" data-bs-ride="carousel">
+        <div class="carousel-indicators">
+            <button type="button" data-bs-target="#mainCarousel" data-bs-slide-to="0" class="active"></button>
+            <button type="button" data-bs-target="#mainCarousel" data-bs-slide-to="1"></button>
+            <button type="button" data-bs-target="#mainCarousel" data-bs-slide-to="2"></button>
+        </div>
+
+        <div class="carousel-inner">
+            <div class="carousel-item active">
+                <img src="https://www.karier.mu/blog/wp-content/uploads/2021/12/programmin.jpg" class="d-block w-100" alt="Coding">
+                <div class="carousel-caption d-none d-md-block">
+                    <h5>Dunia Coding</h5>
+                    <p>Mempelajari dan mengembangkan kemampuan programming.</p>
+                </div>
+            </div>
+            <div class="carousel-item">
+                <img src="https://imgix.datadoghq.com/img/blog/monitoring-django-performance/monitoring-django-performance-hero-image.png?auto=compress%2Cformat&cs=origin&lossless=true&fit=crop&q=75&ar=380%3A193&w=1400&h=711&dpr=1" class="d-block w-100" alt="Code Screen">
+                <div class="carousel-caption d-none d-md-block">
+                    <h5>Django Framework</h5>
+                    <p>Membangun aplikasi web dengan Django.</p>
+                </div>
+            </div>
+            <div class="carousel-item">
+                <img src="https://www.umn.ac.id/wp-content/uploads/2022/10/rear-view-programmer-working-all-night-long1.jpg" class="d-block w-100" alt="Team Work">
+                <div class="carousel-caption d-none d-md-block">
+                    <h5>Teknik Informatika</h5>
+                    <p>Mahasiswa Teknik Informatika yang berdedikasi.</p>
+                </div>
+            </div>
+        </div>
+        
+        <button class="carousel-control-prev" type="button" data-bs-target="#mainCarousel" data-bs-slide="prev">
+            <span class="carousel-control-prev-icon"></span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#mainCarousel" data-bs-slide="next">
+            <span class="carousel-control-next-icon"></span>
+        </button>
+    </div>
+
+    <!-- MAIN CONTAINER WRAPPER -->
+    <div id="mainContainerWrapper" class="container-fluid">
+        <div class="container h-100"> 
+            <div class="row row-full">
+                
+                <!-- SIDEBAR -->
+                <div class="col-md-3 col-full mb-4">
+                    <div class="sidebar">
+                        <div class="text-center mb-4">
+                            <img src="https://i.pinimg.com/736x/2c/3a/a5/2c3aa5d147d231fee6ba7be26c3e53c7.jpg" alt="Profile" class="sidebar-profile-img">
+                            <h5>Ahmad Hussein Mufahir</h5>
+                            <p class="text-muted small">Web Developer</p>
+                        </div>
+                        <hr>
+                        <h6 class="fw-bold mb-3"><i class="bi bi-link-45deg"></i> Quick Links</h6>
+                        <div class="list-group list-group-flush mb-4">
+                            <!-- UPDATE LINK DISINI: Saya arahkan ke halaman resmi -->
+                            <!-- target="_blank" artinya buka di tab baru -->
+                            <a href="https://github.com/hsn26md" target="_blank" class="list-group-item list-group-item-action">
+                                <i class="bi bi-github"></i> Github
+                            </a>
+                            <a href="https://www.linkedin.com/in/ahmad-hussein-mufahir-7a6b98298" target="_blank" class="list-group-item list-group-item-action">
+                                <i class="bi bi-linkedin"></i> LinkedIn
+                            </a>
+                            <a href="https://www.instagram.com/" target="_blank" class="list-group-item list-group-item-action">
+                                <i class="bi bi-instagram"></i> Instagram
+                            </a>
+                        </div>
+                        <h6 class="fw-bold mb-3"><i class="bi bi-code-slash"></i> Skills</h6>
+                        <span class="badge bg-primary mb-1">Python</span>
+                        <span class="badge bg-success mb-1">Django</span>
+                        <span class="badge bg-info mb-1">Bootstrap</span>
+                    </div>
+                </div>
+
+                <!-- MAIN CONTENT AREA -->
+                <div class="col-md-9 col-full">
+                    <div class="main-content-area">
+                        {% block content %}
+                        {% endblock %}
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <!-- FOOTER -->
+    <footer class="bg-dark text-white text-center py-3">
+        <div class="container">
+            <small>&copy; 2025 Hussein Profile. All Rights Reserved.</small>
+        </div>
+    </footer>
+
+    <!-- Bootstrap JS -->
+    <script src="{% static 'js/bootstrap.bundle.min.js' %}"></script>
+</body>
+</html>

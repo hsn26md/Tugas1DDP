@@ -1,0 +1,60 @@
+{% extends 'WebProfile/base.html' %}
+
+{% block content %}
+    <h2 class="section-title">About Me</h2>
+    
+    <!-- BAGIAN 1: PENDIDIKAN -->
+    <div class="card border-0 mb-4">
+        <div class="card-body p-0">
+            <h5 class="mb-3 text-primary"><i class="bi bi-mortarboard-fill"></i> Riwayat Pendidikan</h5>
+            <div class="table-responsive">
+                <table class="table table-striped table-hover border">
+                    <thead class="table-dark">
+                        <tr>
+                            <th scope="col">Tahun</th>
+                            <th scope="col">Jenjang</th>
+                            <th scope="col">Institusi</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>2020-2023</td>
+                            <td>SMA/SMK/MAN</td>
+                            <td>MAN 2 Cianjur</td>
+                        </tr>
+                        <tr>
+                            <td>2025 - Sekarang</td>
+                            <td>Sarjana (S1)</td>
+                            <td>STT Terpadu Nurul Fikri</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <!-- BAGIAN 2: ORGANISASI (Baru Ditambahkan) -->
+    <div class="card border-0">
+        <div class="card-body p-0">
+            <h5 class="mb-3 text-success"><i class="bi bi-people-fill"></i> Pengalaman Organisasi</h5>
+            <div class="table-responsive">
+                <table class="table table-bordered border-success">
+                    <thead class="table-success">
+                        <tr>
+                            <th scope="col">Periode</th>
+                            <th scope="col">Nama Organisasi</th>
+                            <th scope="col">Jabatan</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>2017 - 2019</td>
+                            <td>Pramuka</td>
+                            <td>Kadiv Kedisiplinan</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+{% endblock %}

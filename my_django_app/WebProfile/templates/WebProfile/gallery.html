@@ -1,0 +1,58 @@
+{% extends 'WebProfile/base.html' %}
+{% load static %}
+
+{% block content %}
+    <h2 class="section-title">Gallery Kegiatan</h2>
+    <p class="text-muted mb-4">Dokumentasi kegiatan akademik dan organisasi.</p>
+    
+    <div class="row g-3">
+        <!-- Gambar 1 -->
+        <div class="col-md-4">
+            <div class="card h-100 shadow-sm">
+                <!-- Tambahkan class 'gallery-img' agar efek zoom bekerja -->
+                <img src="{% static 'images/mentoringosjur.jpeg' %}" class="card-img-top gallery-img" alt="Seminar">
+                <div class="card-body p-2">
+                    <p class="text-center small mb-0">Mentoring OSJUR</p>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Gambar 2 -->
+        <div class="col-md-4">
+            <div class="card h-100 shadow-sm">
+                <img src="{% static 'images/prldmkm.jpeg' %}" class="card-img-top gallery-img" alt="Rapat">
+                <div class="card-body p-2">
+                    <p class="text-center small mb-0">Pra-LDMKM</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Gambar 3 -->
+        <div class="col-md-4">
+            <div class="card h-100 shadow-sm">
+                <img src="{% static 'images/mentoringbkpk.jpeg' %}" class="card-img-top gallery-img" alt="Workshop">
+                <div class="card-body p-2">
+                    <p class="text-center small mb-0">Mentoring BKPK</p>
+                </div>
+            </div>
+        </div>
+         <!-- Gambar 4 -->
+        <div class="col-md-4">
+            <div class="card h-100 shadow-sm">
+                <img src="{% static 'images/ormik.jpeg' %}" class="card-img-top gallery-img" alt="Workshop">
+                <div class="card-body p-2">
+                    <p class="text-center small mb-0">Ormik</p>
+                </div>
+            </div>
+        </div>
+         <!-- Gambar 5 -->
+        <div class="col-md-4">
+            <div class="card h-100 shadow-sm">
+                <img src="{% static 'images/osjur.jpeg' %}" class="card-img-top gallery-img" alt="Workshop">
+                <div class="card-body p-2">
+                    <p class="text-center small mb-0">OSJUR</p>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
